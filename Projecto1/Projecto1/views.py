@@ -1,29 +1,26 @@
 import datetime
-import re
 from django.http import HttpResponse
-
-hola="""<html>
-<body>
-<h1>
-Hola como te va, primera pagina con Django
-</h1>
-</body>
-</html>"""
-chau="""<html>
-<body>
-<h1>
-Hasta luego
-</h1>
-</body>
-</html>"""
+from django.template import Template, Context
 
 def saludo(request): # primera vista
 
-    return HttpResponse(hola)
+    doc_externo=open("C:/Users/soporte/Documents/Proyectos Django/Projecto1/Projecto1/Platillas/Hola.html")
+    plt=Template(doc_externo.read())
+    doc_externo.close()
+    ctx=Context()
+    documento=plt.render(ctx)
+    
+    return HttpResponse(documento)
 
 def despedida(request):
 
-    return HttpResponse(chau)
+    doc_externo=open("C:/Users/soporte/Documents/Proyectos Django/Projecto1/Projecto1/Platillas/Chau.html")
+    plt=Template(doc_externo.read())
+    doc_externo.close()
+    ctx=Context()
+    documento=plt.render(ctx)
+
+    return HttpResponse(documento)
 
 def dameFecha(request):
     fecha_actual=datetime.datetime.now()
