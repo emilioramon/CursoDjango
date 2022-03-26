@@ -2,8 +2,34 @@
 <body>
 <h2 style="color: red">
 Hola como te va, primera plantilla con Django
-</h1>
-<p>El nombre del programador es: {{nombre_persona}} {{apellido_persona}}</p>
+</h2>
+{# ESTO ES SOLO UN COMENTARIO #}
+
+{% comment %}
+Esto es un comentario de mas
+de una linea
+{% endcomment%}
+
+{% if nombre_persona == 'Emilio' %}
+<p>El curso lo imparte el profesor titular</p>
+{% else %}
+<p>El curso lo imparte el profesor suplente</p>
+{% endif %}
+<p>El nombre del programador es: {{nombre_persona|upper}} {{apellido_persona.upper}}</p>
 <p>Hora con la plantilla: {{momento_actual.hour}}:{{momento_actual.minute}}</p>
+<p><strong>Temas del curso</strong></p>
+<p>
+    <ul>
+    {% if temas %}
+    {% for elTema in temas %}
+        <li>{{elTema|first|lower}}</li>
+    {% endfor %}
+    {% else %}
+        <p>No hay elementos que mostrar</p>
+
+    {% endif %}
+    
+    </ul>
+</p>
 </body>
 </html>
