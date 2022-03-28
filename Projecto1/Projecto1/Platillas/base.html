@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>
+            {% block title %} {% endblock %}
+        </title>
+    </head>
+
+<body>
+    <h1 style="backgroud-color:green; color:blue; text-align:center; ">Sitio de Emilio</h1>
+    {% include "superior/barra.html" %}
+
+    <h3 style= "text-align: right">Cursos varios</h3>
+    {% block content %} 
+   
+    {% endblock %}
+    <p  style="backgroud-color:darkolivegreen; color: blue; text-align:right; ">Cursos gratuitos. Gracias por su visita </p>
+</body>    
+</html>

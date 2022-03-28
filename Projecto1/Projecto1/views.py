@@ -2,6 +2,7 @@ import datetime
 from django.http import HttpResponse
 from django.template import Template, Context
 from django.template.loader import get_template
+from django.shortcuts import render
 
 class Persona(object):
     def __init__(self, nombre, apellido):
@@ -19,13 +20,26 @@ def saludo(request): # primera vista
     #plt=Template(doc_externo.read())
     #doc_externo.close()
     
-    doc_externo=get_template('Hola.html')
+    #doc_externo=get_template('Hola.html')
     #ctx=Context({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora,"temas":temasDelCurso})
    
     #documento=plt.render(ctx)
-    documento=doc_externo.render({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora,"temas":temasDelCurso})
+    #documento=doc_externo.render({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora,"temas":temasDelCurso})
    
-    return HttpResponse(documento)
+    #return HttpResponse(documento)
+
+    return render(request, "Hola.html", {"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora,"temas":temasDelCurso})
+
+def cursoDjango(request):
+
+    fecha_actual=datetime.datetime.now()
+    return render(request,"cursoC.html",{"dameFecha":fecha_actual})
+
+def cursoCss(request):
+
+    fecha_actual=datetime.datetime.now()
+    return render(request,"cursoCss.html",{"dameFecha":fecha_actual})
+
 
 def despedida(request):
 
